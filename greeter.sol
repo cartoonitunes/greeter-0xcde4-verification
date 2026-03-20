@@ -1,0 +1,15 @@
+contract mortal {
+    address owner;
+    function kill() { if (msg.sender == owner) suicide(owner); }
+}
+contract greeter is mortal {
+    string greeting;
+    function greeter(string _greeting) {
+        greeting = _greeting;
+    }
+    function mortal() { owner = msg.sender; }
+    function kill() { if (msg.sender == owner) suicide(owner); }
+    function greet() constant returns (string) {
+        return greeting;
+    }
+}
