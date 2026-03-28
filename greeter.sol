@@ -1,6 +1,6 @@
 contract mortal {
     address owner;
-    function kill() { if (msg.sender == owner) suicide(owner); }
+    function kill() { if (owner == msg.sender) suicide(owner); }
 }
 contract greeter is mortal {
     string greeting;
